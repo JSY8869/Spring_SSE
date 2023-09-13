@@ -23,6 +23,16 @@ Spring에서 Server-Sent-Event 를 연습하기 위한 레포지터리
 - 타임아웃 발생 시 콜백을 실행하는데 이 때 재연결을 요청하므로 기존 연결(emitter)을 삭제해야 한다.
 - 이 콜백은 emitter를 관리하는 다른 스레드에서 실행되므로 emitter의 저장은 thread-safe한 구조를 사용하여야 한다. (ex: CopyOnWriteArrayList)
 
+## 예시
+### 버전
+- Spring Boot 3.1.3
+- Java 17
+- lombok 1.18.28
+- h2 2.1.214
+- spring-boot-devtools 3.1.3
+- thymeleaf 3.1.2
+- spring-data-jpa 3.1.3
+
 ## 참고 자료
 https://tecoble.techcourse.co.kr/post/2022-10-11-server-sent-events/
 https://docs.spring.io/spring-framework/docs/4.2.0.RC2_to_4.2.0.RC3/Spring%20Framework%204.2.0.RC3/org/springframework/web/servlet/mvc/method/annotation/SseEmitter.html
