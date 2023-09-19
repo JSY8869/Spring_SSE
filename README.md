@@ -35,5 +35,7 @@ Spring에서 Server-Sent-Event 를 연습하기 위한 레포지터리
 
 ## 참고 자료
 https://tecoble.techcourse.co.kr/post/2022-10-11-server-sent-events/
+
 https://docs.spring.io/spring-framework/docs/4.2.0.RC2_to_4.2.0.RC3/Spring%20Framework%204.2.0.RC3/org/springframework/web/servlet/mvc/method/annotation/SseEmitter.html
+
 https://hudi.blog/server-sent-events-with-spring/
