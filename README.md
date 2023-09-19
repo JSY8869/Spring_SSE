@@ -17,11 +17,18 @@ Spring에서 Server-Sent-Event 를 연습하기 위한 레포지터리
 3. 서버에서 이벤트가 발생하면 해당 객체를 통해 클라이언트로 데이터를 전달한다.
 
 ## Spring의 SSE
+### SseEmitter
 - spring framework 4.2부터 SSE 통신을 지원하는 SseEmitter API를 제공
 - Emitter를 생성하고 나서 만료 시간까지 아무런 데이터도 보내지 않으면 재연결 요청시 503 Service Unavailable 에러가 발생 (더미 데이터로 해결)
 - SseEmitter를 생성할 때는 비동기 요청이 완료되거나 타임아웃 발생 시 실행할 콜백을 등록할 수 있다.
 - 타임아웃 발생 시 콜백을 실행하는데 이 때 재연결을 요청하므로 기존 연결(emitter)을 삭제해야 한다.
 - 이 콜백은 emitter를 관리하는 다른 스레드에서 실행되므로 emitter의 저장은 thread-safe한 구조를 사용하여야 한다. (ex: CopyOnWriteArrayList)
+### WebFlux
+- reactive 스타일의 어플리케이션 개발을 도와주는 모듈
+- WebMvc를 대체 가능
+- webflux는 요청을 처리하는 방식이 Event-Driven 방식이고 비동기 논블러킹 방식
+- WebFlux는 이벤트 루프가 돌아서 요청이 발생할 경우 그것에 맞는 핸들러에게 처리를 위임하고 처리가 완료되면 callback 메소드 등을 통해 응답을 반환합니다.
+- 이 방식의 경우 요청이 처리될 때까지 기다리지 않기때문에 Spring MVC에 비해 사용자의 요청을 대량으로 받아낼 수 있다는 장점이 있음
 
 ## 예시
 ### 버전
@@ -32,8 +39,13 @@ Spring에서 Server-Sent-Event 를 연습하기 위한 레포지터리
 - spring-boot-devtools 3.1.3
 - thymeleaf 3.1.2
 - spring-data-jpa 3.1.3
+- spring-webflux 3.1.3
 
 ## 참고 자료
 https://tecoble.techcourse.co.kr/post/2022-10-11-server-sent-events/
+
 https://docs.spring.io/spring-framework/docs/4.2.0.RC2_to_4.2.0.RC3/Spring%20Framework%204.2.0.RC3/org/springframework/web/servlet/mvc/method/annotation/SseEmitter.html
+
 https://hudi.blog/server-sent-events-with-spring/
+
+https://www.baeldung.com/spring-webflux
